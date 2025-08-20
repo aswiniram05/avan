@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Love ❤️</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      overflow: hidden;
+    }
+
+    .page {
+      display: none;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+    .active { display: flex; }
+
+    h1, h2, h3 { color: #fff; text-shadow: 2px 2px 5px rgba(0,0,0,0.4); }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #ff69b4;
+      color: white;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Hearts */
+    .heart {
+      position: fixed;
+      top: -50px;
+      color: red;
+      font-size: 24px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh); }
+    }
+
+    /* Scrapbook */
+    .book {
+      position: relative;
+      width: 400px;
+      height: 300px;
+      perspective: 1500px;
+    }
+    .page-flip {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-origin: left;
+      transition: transform 1s;
+      background: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      backface-visibility: hidden;
+    }
+    .page-flip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .page-flip.flipped {
+      transform: rotateY(-180deg);
+      z-index: 0;
+    }
+    .caption {
+      position: absolute;
+      bottom: 10px; left: 10px;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
+      animation: sparkleAnim 2s linear forwards;
+    }
+    @keyframes sparkleAnim {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(2); }
+    }
+
+    /* Memory frame */
+    .frame {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 600px;
+    }
+    .frame img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1 -->
+  <div id="page1" class="page active">
+    <h1>Do You Love Aswini? ❤️</h1>
+    <button onclick="nextPage()">Yes, Forever!</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div id="page2" class="page">
+    <h2>Happy Birthday My Love 🎂</h2>
+    <p>You are the most precious part of my life...</p>
+    <button onclick="nextPage()">See More</button>
+  </div>
+
+  <!-- Page 3 -->
+  <div id="page3" class="page">
+    <h2>Our Scrapbook 📖</h2>
+    <div class="book" id="book">
+      <div class="page-flip">
+        <img src="images/page1.jpg" alt="Page 1">
+        <div class="caption">Your smile lights up my world ✨</div>
+      </div>
+      <div class="page-flip">
+        <img src="images/page2.jpg" alt="Page 2">
+        <div class="caption">Every ride with you is a fairytale 🚴</div>
+      </div>
+      <div class="page-flip">
+        <img src="images/page3.jpg" alt="Page 3">
+        <div class="caption">With you, every day is special ❤️</div>
+      </div>
+    </div>
+    <button onclick="flipNext()">Next Page</button>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <!-- Page 4 -->
+  <div id="page4" class="page">
+    <h2>Falling Hearts for You 💕</h2>
+    <p>My love for you will never stop falling...</p>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <!-- Page 5 -->
+  <div id="page5" class="page">
+    <h2>Our Memories 📸</h2>
+    <div class="frame">
+      <img src="images/selfie1.jpg" alt="Selfie 1">
+      <img src="images/selfie2.jpg" alt="Selfie 2">
+      <img src="images/selfie3.jpg" alt="Selfie 3">
+    </div>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <!-- Page 6 -->
+  <div id="page6" class="page">
+    <h2>Our Rides Together 🛵</h2>
+    <div class="frame">
+      <img src="images/ride1.jpg" alt="Ride 1">
+      <img src="images/ride2.jpg" alt="Ride 2">
+      <img src="images/ride3.jpg" alt="Ride 3">
+    </div>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <!-- Page 7 -->
+  <div id="page7" class="page">
+    <h2>My Promises 💍</h2>
+    <ul>
+      <li>To always love you endlessly 💖</li>
+      <li>To support your dreams 🌟</li>
+      <li>To stand by you forever 💕</li>
+    </ul>
+    <h3>Happy Birthday, My Love! 🎉</h3>
+  </div>
+
+  <!-- Audio -->
+  <audio id="audio-memories" src="audio/memories.mp3" preload="auto"></audio>
+  <audio id="audio-book" src="audio/book.mp3" preload="auto"></audio>
+  <audio id="audio-hearts" src="audio/hearts.mp3" preload="auto"></audio>
+
+  <script>
+    let currentPage = 1;
+    const totalPages = 7;
+
+    function nextPage() {
+      document.getElementById(`page${currentPage}`).classList.remove("active");
+      currentPage++;
+      if (currentPage > totalPages) currentPage = totalPages;
+      document.getElementById(`page${currentPage}`).classList.add("active");
+      handlePageChange();
+    }
+
+    // Hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    // Scrapbook
+    let currentFlipPage = 0;
+    const pagesToFlip = document.querySelectorAll(".page-flip");
+
+    function flipNext() {
+      if (currentFlipPage < pagesToFlip.length) {
+        pagesToFlip[currentFlipPage].classList.add("flipped");
+        currentFlipPage++;
+      } else {
+        pagesToFlip.forEach(p => p.classList.remove("flipped"));
+        currentFlipPage = 0;
+      }
+    }
+
+    // Audio + Effects
+    function handlePageChange() {
+      document.querySelectorAll("audio").forEach(a => { a.pause(); a.currentTime = 0; });
+
+      if (currentPage === 3) {
+        document.getElementById("audio-book").play();
+        setInterval(() => {
+          const sparkle = document.createElement("div");
+          sparkle.className = "sparkle";
+          sparkle.style.left = Math.random() * window.innerWidth + "px";
+          sparkle.style.top = Math.random() * window.innerHeight + "px";
+          document.body.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), 2000);
+        }, 500);
+      }
+
+      if (currentPage === 4) {
+        document.getElementById("audio-hearts").play();
+        setInterval(createHeart, 500);
+      }
+
+      if (currentPage === 5) {
+        document.getElementById("audio-memories").play();
+      }
+    }
+  </script>
+</body>
+</html>
